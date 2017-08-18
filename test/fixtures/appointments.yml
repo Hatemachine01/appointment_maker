@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-08-18
+  time: 2017-08-18 14:09:53
+  duratin: 2017-08-18 14:09:53
+  description: MyString
+
+two:
+  date: 2017-08-18
+  time: 2017-08-18 14:09:53
+  duratin: 2017-08-18 14:09:53
+  description: MyString
