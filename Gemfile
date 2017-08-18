@@ -11,8 +11,6 @@ gem 'rails', '~> 5.0.4'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -40,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'sqlite3'
 end
 
 group :development do
