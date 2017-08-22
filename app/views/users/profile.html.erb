@@ -2,9 +2,13 @@
 <h1> PROFILE </h1>
 <% user =  User.find_by_id(session[:user_id]) %>
 <%= user.name %> <%= user.email %> 
+<%= link_to "Personal Info", personal_path(:user_id => session[:user_id]) %>
+<%= link_to('Logout', logout_path , method: :delete) %> 
+</div>
 
 
- <%= link_to('Logout', logout_path , method: :delete) %> 
+
+
 
 
 
@@ -12,6 +16,4 @@
 <%= month_calendar do |date| %>
   <%= date.day %>
 <% end %>
-</div>
-
 </div>

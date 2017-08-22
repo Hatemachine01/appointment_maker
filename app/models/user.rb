@@ -18,7 +18,7 @@ acts_as_messageable
 attr :password
 
 def password
-    @password ||= Password.new(password_hash)
+    @password ||= Password.new(password_digest)
   end
 
 def password=(new_password)
