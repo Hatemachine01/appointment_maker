@@ -1,0 +1,9 @@
+<div class="container">
+<h1> PROFILE </h1>
+<% user =  User.find_by_id(session[:user_id]) %>
+<%= user.name %> <%= user.email %> 
+
+
+ <%= link_to('Logout', logout_path , method: :delete) %>       
+
+</div>

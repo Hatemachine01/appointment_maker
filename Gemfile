@@ -7,6 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'bcrypt'
 gem 'rails', '~> 5.0.4'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
@@ -28,6 +29,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'mailboxer', github: 'mailboxer/mailboxer'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -35,6 +37,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+
+
+#added gems
+gem 'bcrypt'
+gem 'validates_email_format_of'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
