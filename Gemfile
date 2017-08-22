@@ -43,6 +43,7 @@ gem 'mailboxer', github: 'mailboxer/mailboxer'
 #added gems
 gem 'bcrypt'
 gem 'validates_email_format_of'
+gem "simple_calendar", "~> 2.0"
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
