@@ -44,6 +44,7 @@ gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'bcrypt'
 gem 'validates_email_format_of'
 gem "simple_calendar", "~> 2.0"
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
