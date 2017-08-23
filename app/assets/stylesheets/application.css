@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-datepicker3
+ @import "bootstrap-timepicker";
+ *= require simple_calendar
+	
  */
 
 .main_img {
@@ -28,10 +31,14 @@
 	
 	float: right;
     margin-top: 100px;
-    margin-right: 200px;
-    color: blue;
-    background-color: orange;
-    width: 500px;
-    height: 290px;
+    margin-right: 135px;
+    width: 639px;
+    height: 295px;
 }		
 
+#schedule_link {
+	float: left;
+    margin-top: 100px;
+    margin-left: 30px;
+}
+}

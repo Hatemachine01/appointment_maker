@@ -1,9 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration[5.0]
   def change
     create_table :appointments do |t|
-      t.date :date
-      t.time :time
-      t.time :duration
+      t.datetime :start_time
+      t.integer :duration
       t.string :description
 
       t.timestamps

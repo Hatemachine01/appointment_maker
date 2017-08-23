@@ -6,14 +6,18 @@
 <%= link_to('Logout', logout_path , method: :delete) %> 
 </div>
 
-
-
-
-
-
-
-<div id="calender"> 
-<%= month_calendar do |date| %>
-  <%= date.day %>
-<% end %>
+<div id='schedule_link'> 
+<%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-default" %>
+<%= link_to "Manage Appointments", appointments_path , :class => "btn btn-default" %>
 </div>
+
+<div id="calender">
+<h3> Appointments (<%= @reuniones.count %>)</h3>
+<%= month_calendar events: @reuniones do |date, eventos| %>
+  <%= date.day %>
+  <% eventos.each do |evento| %>
+    <div>
+      <%= link_to evento.description, evento %>
+    </div>
+  <% end %>
+<% end %></div>

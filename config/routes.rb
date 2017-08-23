@@ -11,6 +11,7 @@ delete '/logout',  to: 'sessions#destroy'
 
 root 'users#index'
 
+resources :appointments
 resources :users
 
 resources :conversation do
@@ -18,3 +19,4 @@ resources :conversation do
   end
 
 end
+

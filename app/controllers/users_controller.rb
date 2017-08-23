@@ -18,6 +18,8 @@ def create
   respond_to do |format|
     if @user.save
         session[:user_id] = @user.id
+       	p "Here" * 30	
+        @reuniones = Appointments.all 
         format.html { render 'profile', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
     else
@@ -30,7 +32,6 @@ end
 
 def personal
 	@current_user = User.find_by_id(params[:user_id])
-	@reuniones = Meeting.all 
 end
 
 
