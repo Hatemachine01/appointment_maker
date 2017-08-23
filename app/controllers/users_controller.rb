@@ -19,7 +19,7 @@ def create
     if @user.save
         session[:user_id] = @user.id
        	p "Here" * 30	
-        @reuniones = Appointments.all 
+        @reuniones = Appointment.all 
         format.html { render 'profile', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
     else
