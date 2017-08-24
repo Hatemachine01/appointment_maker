@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 20170821171351) do
     t.datetime "start_time"
     t.integer  "duration"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|

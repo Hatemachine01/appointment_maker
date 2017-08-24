@@ -3,6 +3,10 @@ require 'bcrypt'
 class User < ApplicationRecord
 	 include BCrypt
 
+has_many :appointments 
+
+
+
 has_secure_password
 
 #validations

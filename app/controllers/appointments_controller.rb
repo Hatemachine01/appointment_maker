@@ -19,6 +19,9 @@ def create
   actual_date =  Date.strptime( mixed , '%m/%d/%Y')
 
   appointment = Appointment.create(start_time: actual_date , duration: duration, description: description)
+  current_user = User.find_by_id(session[:user_id])
+  appointment.users << current_user  #aqui se asocia la cita con sus usuario
+  current_user.appointments << appointment
   @reuniones = Appointment.all
   render 'users/profile'
 
