@@ -44,12 +44,20 @@
  		</div>
 
 
-        <div class="form-group">
+    <div class="form-group">
  	    <%= label_tag(:Duration, ) %>
   		<%= select_tag(:duration, options_for_select(@duration.collect{ |u| [u, u] }), class: "form-control") %>
 		</div>
  
- 		<div class="form-group">
+ 		
+    <div class="form-group">
+      <%= label_tag(:with, ) %>
+      <%= select_tag(:with, options_for_select(@admins.collect{ |u| [u.name, u.id] }), class: "form-control") %>
+    </div>
+ 
+
+
+    <div class="form-group">
           <%= f.label :descriptipn, class:"control-label" %>
           <%= f.text_field :description, class: "form-control" %>
         </div>
