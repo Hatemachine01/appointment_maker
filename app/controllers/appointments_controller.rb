@@ -17,7 +17,6 @@ def create
   mixed =  [date,time].join(" ")
   # start_time =	Time.parse(mixed)
   actual_date =  Date.strptime( mixed , '%m/%d/%Y')
-
   appointment = Appointment.create(start_time: actual_date , duration: duration, description: description)
   current_user = User.find_by_id(session[:user_id])
   appointment.users << current_user  #aqui se asocia la cita con sus usuario
