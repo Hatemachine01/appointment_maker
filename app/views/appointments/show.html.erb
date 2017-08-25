@@ -30,7 +30,7 @@
          <%  end %> 
         <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-default" %> </th>
          <th> <%= link_to "CONFIRM", confirm_path(meeting.id), data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
-        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :destroy, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
 
         </td>
         </td>
