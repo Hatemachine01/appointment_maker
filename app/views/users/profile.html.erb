@@ -18,12 +18,21 @@
   <% eventos.each do |evento| %>
     <div>
       <% if evento.status == false %>
-      <% x = " *uncomfirmed*" %>
+      <% x = " *unconfirmed*" %>
       <%= link_to evento.description + x , evento %>
+     
+
       <% else %>
-      <% x = " *comfirmed*" %>
-      <%= link_to evento.description + x , evento %>
+    
+      <% x = " *confirmed*" %>
+     <%= link_to evento.description + x , evento %> 
+
     </div>
-  <% end %>
-   <% end %>
-<% end %></div>
+     <% end %>
+     <% end %>
+<% end %>
+</div>
+
+
+
+

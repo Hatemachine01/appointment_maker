@@ -41,3 +41,33 @@
     margin-top: 100px;
     margin-left: 30px;
 }
+
+#popup {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: cornflowerblue;
+    color: white;
+    display: none;
+    padding-top: 8px;
+    
+
+    position: absolute;
+}
+
+
+
+#popup_2 {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: red;
+    color: white;
+    display: none;
+    padding-top: 8px;
+    
+
+    position: absolute;
+}

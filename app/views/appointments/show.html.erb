@@ -14,8 +14,11 @@
        
       <% @reuniones.each do |meeting| %>
 
-
-
+      <% meeting.users.ids.each do |id| %>
+      <% p user = User.find_by_id(id) %>
+      <% if user.status == false %>
+        <td>  User :    </td>
+        <th>  <%= user.name %> </th>
         <td>  Date :    </td>
         <th>  <%= meeting.start_time %> </th>
         <td>  Description : </td>
@@ -31,6 +34,11 @@
         <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-default" %> </th>
          <th> <%= link_to "CONFIRM", confirm_path(meeting.id), data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
         <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+
+        <th><%= link_to "User Info", personal_info_path(user.id), remote: true , class: "btn btn-default" %>
+        </th>
+    <% end %>
+    <% end %>
 
         </td>
         </td>
@@ -53,9 +61,6 @@
       <tr>
        
       <% @reuniones.each do |meeting| %>
-
-
-
         <td>	Date :		</td>
         <th>  <%= meeting.start_time %> </th>
       	<td>	Description	:	</td>
@@ -78,13 +83,5 @@
   </table>
 <%  end %>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
-
-
-
-
-<div id="product-modal" class="modal fade"></div>
-<div id="show"></div>
-<div id="buy"></div>
-<div id="finalized"></div>
-<div id="passengers"> </div>
