@@ -12,7 +12,9 @@ user = User.find_by_email(user_params[:email])
 # Save the user id inside the browser cookie. This is how we keep the user 
 # logged in when they navigate around our website.
    session[:user_id] = user.id
-   @reuniones = Appointment.all 
+   current_user = User.find_by_id(session[:user_id])
+   @reuniones = current_user.appointments
+ 
    render 'users/profile' 
     else
     # If user's login doesn't work, send them back to the login form.

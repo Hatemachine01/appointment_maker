@@ -8,7 +8,7 @@
 
 <div id='schedule_link'> 
 <%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-default" %>
-<%= link_to "Manage Appointments", appointments_path , :class => "btn btn-default" %>
+<%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
 </div>
 
 <div id="calender">
@@ -17,7 +17,13 @@
   <%= date.day %>
   <% eventos.each do |evento| %>
     <div>
-      <%= link_to evento.description, evento %>
+      <% if evento.status == false %>
+      <% x = " *uncomfirmed*" %>
+      <%= link_to evento.description + x , evento %>
+      <% else %>
+      <% x = " *comfirmed*" %>
+      <%= link_to evento.description + x , evento %>
     </div>
   <% end %>
+   <% end %>
 <% end %></div>

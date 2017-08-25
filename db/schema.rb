@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821171351) do
+ActiveRecord::Schema.define(version: 20170824211550) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_time"
     t.integer  "duration"
     t.string   "description"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_appointments_on_user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "status",      default: false
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|

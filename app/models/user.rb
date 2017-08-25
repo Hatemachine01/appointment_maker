@@ -3,7 +3,8 @@ require 'bcrypt'
 class User < ApplicationRecord
 	 include BCrypt
 
-has_many :appointments 
+has_many :user_appointments
+has_many :appointments, through: :user_appointments
 
 
 

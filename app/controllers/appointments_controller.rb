@@ -2,9 +2,10 @@ class AppointmentsController < ApplicationController
 
 
 def new
-@appointment = Appointment.new
-@admins = User.where(status: true)
-@duration = 1..5
+  p "ENTRO" * 10
+  @appointment = Appointment.new
+  @admins = User.where(status: true)
+  @duration = 1..5
 end
 
 
@@ -19,28 +20,64 @@ def create
   mixed =  [date,time].join(" ")
   # start_time =	Time.parse(mixed)
   actual_date =  Date.strptime( mixed , '%m/%d/%Y')
-  appointment = Appointment.create(start_time: actual_date , duration: duration, description: description)
+  appointment = Appointment.create(start_time: actual_date , duration: duration, description: description )
   current_user = User.find_by_id(session[:user_id])
-  
-  appointment.users << current_user << appointment_with #aqui se asocia la cita con sus usuario
-  current_user.appointments << appointment
-  appointment_with.appointments << appointment
-  @reuniones = Appointment.all
+  users = [current_user, appointment_with]
+  appointment.users << users #aqui se asocia la cita con sus usuario
+  # current_user.appointments << appointment
+  p "Here" * 40 
+  @reuniones = current_user.appointments
   render 'users/profile'
 
+end
 
 
+def show
+ @current_user = User.find_by_id(session[:user_id])
+ @reuniones = @current_user.appointments
 end
 
 
 
+def edit
+  @admins = User.where(status: true)
+  @duration = 1..5
+  @appointment = Appointment.find_by_id(params[:id])
+end
+
+def update
+  date = params[:date]
+  time = params[:time]
+  mixed =  [date,time].join(" ")
+  actual_date =  Date.strptime( mixed , '%m/%d/%Y')
+  duration = params[:duration].to_i
+  description = params[:appointment][:description]
+  appointment_with = User.find_by_id(params[:with].to_i)
+  appointment = Appointment.update(params[:id], :start_time => actual_date , 
+    :duration => duration, :description => description )
+  current_user = User.find_by_id(session[:user_id])
+  @reuniones = current_user.appointments
+  render 'users/profile'
+end
 
 
+def confirm
+  appointment = Appointment.update(params[:id], :status => true)
+  @current_user = User.find_by_id(session[:user_id])
+  @reuniones = @current_user.appointments
+  render 'show'
+end
 
 
-
-
+def destroy
+  
+  Appointment.destroy(params[:id])
+  @current_user = User.find_by_id(session[:user_id])
+  @reuniones = @current_user.appointments
+  render 'show'
+end
 
 
 
 end
+

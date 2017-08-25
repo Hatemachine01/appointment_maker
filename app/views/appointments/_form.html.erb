@@ -1,0 +1,76 @@
+<h1> APPOINTMENT </h1>
+
+<%= form_for @appointment, url: appointments_path do |f| %>
+    
+     <div class="container">
+      <div class="modal-body">
+        <ul class="errors"></ul>
+   <% p @appointment.errors.any? %> 
+
+   <% if @appointment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this article from being saved:</h2>
+ 
+    <ul>
+    <% @appointment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+   
+      
+       <div class="form-group">
+	  <%= label_tag(:date, "Date") %>
+	  <input type="text" data-provide='datepicker' data-date-format="mm/dd/yyyy" value: "date" name="date">
+	  </div>
+
+
+   		<div class="form-group">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" href="css/bootstrap.min.css" />
+        <link type="text/css" href="css/bootstrap-timepicker.min.css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+   		
+   		<%= label_tag(:time, "Time") %>
+        <div class="input-group bootstrap-timepicker timepicker">
+        <input id="timepicker1" type="text" name= "time" class="form-control input-small" value: "time">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
+        <script type="text/javascript">
+            $('#timepicker1').timepicker();
+        </script>
+ 		</div>
+
+
+    <div class="form-group">
+ 	    <%= label_tag(:Duration, ) %>
+  		<%= select_tag(:duration, options_for_select(@duration.collect{ |u| [u, u] }), class: "form-control") %>
+		</div>
+ 
+ 		
+    <div class="form-group">
+      <%= label_tag(:with, ) %>
+      <%= select_tag(:with, options_for_select(@admins.collect{ |u| [u.name, u.id] }), class: "form-control") %>
+    </div>
+ 
+
+
+    <div class="form-group">
+          <%= f.label :descriptipn, class:"control-label" %>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+
+
+
+      
+      <div class="modal-footer">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div> 
+

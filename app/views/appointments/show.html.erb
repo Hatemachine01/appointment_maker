@@ -1,0 +1,90 @@
+<h1> All appointments go here</h1>
+
+<% if @current_user.status %>
+<h2> Hi Admin! </h2>
+
+
+<div class="container">
+  <div class="well">
+  </div>
+  <div class="new-product"></div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+       
+      <% @reuniones.each do |meeting| %>
+
+
+
+        <td>  Date :    </td>
+        <th>  <%= meeting.start_time %> </th>
+        <td>  Description : </td>
+        <th>  <%= meeting.description %> </th>
+        <td>  Duration  : </td>
+        <th>  <%= meeting.duration %> </th>
+        <td>  Confirmed ?   </td>
+          <% if  meeting.status == false %> 
+        <th>      NO        </th>
+          <% else  %> 
+        <th>      YES       </th> 
+         <%  end %> 
+        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-default" %> </th>
+         <th> <%= link_to "CONFIRM", confirm_path(meeting.id), data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+
+        </td>
+        </td>
+      </tr>
+    </thead>
+    <%  end %>
+  </table>
+
+
+<% else %>
+
+
+
+<div class="container">
+  <div class="well">
+  </div>
+  <div class="new-product"></div>
+	<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+       
+      <% @reuniones.each do |meeting| %>
+
+
+
+        <td>	Date :		</td>
+        <th>  <%= meeting.start_time %> </th>
+      	<td>	Description	:	</td>
+      	<th>  <%= meeting.description %> </th>
+      	<td>	Duration	:	</td>
+      	<th>  <%= meeting.duration %> </th>
+      	<td>	Confirmed ?		</td>
+      	  <% if  meeting.status == false %> 
+        <th>   		NO				</th>
+          <% else  %> 
+        <th>   		YES				</th>	
+         <%  end %>	
+        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-default" %> </th>
+        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+
+        </td>
+      </tr>
+    </thead>
+    <%  end %>
+  </table>
+<%  end %>
+
+
+
+
+
+
+<div id="product-modal" class="modal fade"></div>
+<div id="show"></div>
+<div id="buy"></div>
+<div id="finalized"></div>
+<div id="passengers"> </div>
