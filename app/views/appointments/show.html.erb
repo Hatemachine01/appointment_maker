@@ -1,4 +1,4 @@
-<h1> All appointments go here</h1>
+<h1>  Appointments </h1>
 
 <% if @current_user.status %>
 <h2> Hi Admin! </h2>
@@ -31,11 +31,11 @@
           <% else  %> 
         <th>      YES       </th> 
          <%  end %> 
-        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-default" %> </th>
-         <th> <%= link_to "CONFIRM", confirm_path(meeting.id), data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
-        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-primary" %> </th>
+         <th> <%= link_to "CONFIRM", confirm_path(meeting.id), data: {confirm: 'Are you sure?' } , :class => "btn btn-warning" %> </th>
+        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-danger" %> </th>
 
-        <th><%= link_to "User Info", personal_info_path(user.id), remote: true , class: "btn btn-default" %>
+        <th><%= link_to "User Info", personal_info_path(user.id), remote: true , class: "btn btn-info" %>
         </th>
     <% end %>
     <% end %>
@@ -73,8 +73,8 @@
           <% else  %> 
         <th>   		YES				</th>	
          <%  end %>	
-        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-default" %> </th>
-        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-default" %> </th>
+        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-primary" %> </th>
+        <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-danger" %> </th>
 
         </td>
       </tr>

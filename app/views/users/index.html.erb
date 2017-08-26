@@ -1,5 +1,24 @@
-<h1>  <%= link_to "Log in", login_path %> </h1>
-<h2>  <%= link_to "Sign-up", new_user_path %> </h2>
-<%= image_tag("cover_img.jpg", class: "main_img") %>
+<h1>All users</h1>
+<table>
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+    </tr>
+  </thead>
+ <% @all_users.each do |user| %>  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone_number %></td>
+    <td><%= link_to "UPDATE", users_path, :class => "btn btn-primary" %></td>
+    <td> <%= link_to "DELETE", user_path(user.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
 
 

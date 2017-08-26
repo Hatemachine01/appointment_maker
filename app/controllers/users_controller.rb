@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
 
 def index
+
+@all_users = User.all
+
 end
 
 def new
@@ -29,6 +32,19 @@ def create
       end
     end
 end
+
+
+def profile
+end
+
+
+def destroy
+  User.destroy(params[:id])
+  @all_users = User.all
+  render 'index'
+end
+
+
 
 
 def personal

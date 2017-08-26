@@ -9,9 +9,9 @@ post   '/login',   to: 'sessions#create'
 delete '/logout',  to: 'sessions#destroy'
 
 
+root "application#index"
 
 
-root 'users#index'
 
 resources :appointments
 resources :users
