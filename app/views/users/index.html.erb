@@ -1,4 +1,10 @@
 <h1>All users</h1>
+
+<div id='schedule_link'> 
+<%= link_to "Search Users", searcher_path,  remote: true , :class => "btn btn-info" %>
+</div>
+
+
 <table>
  <table class="table table-hover">
   <thead>
@@ -21,4 +27,5 @@
 </table>
 
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 

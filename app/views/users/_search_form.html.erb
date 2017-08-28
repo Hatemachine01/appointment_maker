@@ -1,0 +1,21 @@
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;          </button>
+    <h4 class="modal-title" id="myModalLabel"></h4>
+  </div>
+  <div class="modal-body">
+<p> Search by name </p>
+<%= form_tag(search_path, method: :get, remote: true) do %>
+  <%= label_tag :Name %>
+  <%= text_field_tag :term %>
+  <%= label_tag :Email %>
+  <%= text_field_tag :term %>
+  <%= submit_tag 'Search' %>
+<% end %>
+</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+</div>

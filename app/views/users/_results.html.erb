@@ -1,0 +1,41 @@
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;          </button>
+    <h4 class="modal-title" id="myModalLabel"></h4>
+  </div>
+  <div class="modal-body">
+
+<% p @results  %>
+<% if @results == #<ActiveRecord::Relation []> %>
+
+<p> NO USERS WERE FOUND WITH THAT NAME </p>
+
+<% else %>
+<table>
+ <table class="table table-hover">
+  <thead>
+<tr>
+      <th>User ID</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+    </tr>
+  </thead>
+ <% @results.each do |user| %>  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone_number %></td> 
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+</div>
+

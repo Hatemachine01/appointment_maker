@@ -64,11 +64,27 @@ def update
 	render 'personal'
 end
 
+
+def searcher
+end
+
+
+def search
+ p params[:term]
+ @results = if params[:term]
+  search_key = params[:term]
+  User.where("name LIKE ? OR email LIKE ?", search_key, search_key) 
+  end
+ @results
+end
+
+
+
 private
 
 
 def user_params
-    params.require(:user).permit(:name, :email, :password, :address, :phone_number)
+    params.require(:user).permit(:name, :email, :password, :address, :phone_number , :term)
 end
 
 end
