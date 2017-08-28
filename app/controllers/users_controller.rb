@@ -70,10 +70,10 @@ end
 
 
 def search
- p params[:term]
- @results = if params[:term]
-  search_key = params[:term]
-  User.where("name ILIKE ? OR email ILIKE ?", search_key, search_key) 
+ @results = if params[:name] or params[:email]
+  search_key_email = params[:email]
+  search_key_name = params[:name]
+  User.where("name LIKE ? OR email LIKE ?", search_key_name, search_key_email) 
   end
  @results
 end
@@ -84,7 +84,7 @@ private
 
 
 def user_params
-    params.require(:user).permit(:name, :email, :password, :address, :phone_number , :term)
+    params.require(:user).permit(:name, :email, :password, :address, :phone_number)
 end
 
 end

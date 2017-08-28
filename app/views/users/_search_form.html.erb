@@ -5,12 +5,12 @@
     <h4 class="modal-title" id="myModalLabel"></h4>
   </div>
   <div class="modal-body">
-<p> Search by name </p>
+<p> Search by name or Email </p>
 <%= form_tag(search_path, method: :get, remote: true) do %>
   <%= label_tag :Name %>
-  <%= text_field_tag :term %>
+  <%= text_field_tag :name %>
   <%= label_tag :Email %>
-  <%= text_field_tag :term %>
+  <%= text_field_tag :email %>
   <%= submit_tag 'Search' %>
 <% end %>
 </div>
