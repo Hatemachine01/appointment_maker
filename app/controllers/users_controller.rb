@@ -73,7 +73,7 @@ def search
  p params[:term]
  @results = if params[:term]
   search_key = params[:term]
-  User.where("name LIKE ? OR email LIKE ?", search_key, search_key) 
+  User.where("name ILIKE ? OR email ILIKE ?", search_key, search_key) 
   end
  @results
 end
