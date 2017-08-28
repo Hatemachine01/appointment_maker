@@ -1,0 +1,22 @@
+<div id="calender">
+<h3> Appointments (<%= @reuniones.count %>)</h3>
+<%= month_calendar events: @reuniones do |date, eventos| %>
+  <%= date.day %>
+  <% eventos.each do |evento| %>
+    <div>
+      <% if evento.status == false %>
+      <% x = " *unconfirmed*" %>
+      <%= link_to evento.description + x , evento %>
+     
+
+      <% else %>
+    
+      <% x = " *confirmed*" %>
+     <%= link_to evento.description + x , evento %> 
+    </div>
+     <% end %>
+     <% end %>
+<% end %>
+
+
+

@@ -79,6 +79,11 @@ def search
 end
 
 
+def calendar
+ current_user = User.find_by_id(session[:user_id])
+ @reuniones = current_user.appointments
+end
+
 
 private
 
