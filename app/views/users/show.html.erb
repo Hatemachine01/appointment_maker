@@ -21,11 +21,8 @@
       <% if evento.status == false %>
       <% x = " *unconfirmed*" %>
       <%= link_to evento.description + x , evento %>
-     
-
       <% else %>
-    
-      <% x = " *confirmed*" %>
+     <% x = " *confirmed*" %>
      <%= link_to evento.description + x , evento %> 
     </div>
      <% end %>

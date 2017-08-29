@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
 
 
 def new
-  p "ENTRO" * 10
+  
   @appointment = Appointment.new
   @admins = User.where(status: true)
   @duration = 1..5
@@ -28,7 +28,7 @@ def create
   appointment.users << users #aqui se asocia la cita con sus usuario
   # current_user.appointments << appointment
   @reuniones = current_user.appointments
-  render 'users/profile'
+  redirect_to user_path(current_user)
 
 end
 
@@ -75,7 +75,7 @@ def update
     end
   current_user = User.find_by_id(session[:user_id])
   @reuniones = current_user.appointments
-  render 'users/profile'
+  redirect_to user_path(current_user)
 end
 
 

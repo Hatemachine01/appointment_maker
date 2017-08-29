@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 def index
 
-@all_users = User.all
+  @all_users = User.all
 
 end
 
@@ -35,8 +35,15 @@ def create
 end
 
 
-def profile    
+
+def show
+current_user = User.find_by_id(session[:user_id])
+@reuniones = current_user.appointments
 end
+
+
+# def profile    
+# end
 
 
 def destroy
@@ -78,6 +85,10 @@ def search
   end
  @results
 end
+
+def test
+end
+
 
 
 def calendar
