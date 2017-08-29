@@ -36,8 +36,19 @@ end
 def show
  @current_user = User.find_by_id(session[:user_id])
  @reuniones = @current_user.appointments
- 
-end
+ @array = []
+ @reconfirmation = []
+    @reuniones.each do |meeting|   
+      if meeting.status == false
+      @array << meeting
+      if meeting.reconfirmation == true
+      @reconfirmation << meeting
+      end
+    end
+   end
+  @array
+  @reconfirmation
+ end
 
 
 
@@ -58,6 +69,10 @@ def update
   appointment_with = User.find_by_id(params[:with].to_i)
   appointment = Appointment.update(params[:id], :start_time => actual_date , 
   :duration => duration, :description => description )
+    #change appointment status if already confirmed
+    if appointment.status == true 
+      Appointment.update(appointment.id, :status => false , :reconfirmation => true )
+    end
   current_user = User.find_by_id(session[:user_id])
   @reuniones = current_user.appointments
   render 'users/profile'
@@ -68,6 +83,18 @@ def confirm
   appointment = Appointment.update(params[:id], :status => true)
   @current_user = User.find_by_id(session[:user_id])
   @reuniones = @current_user.appointments
+  @array = []
+  @reconfirmation = []
+    @reuniones.each do |meeting|   
+      if meeting.status == false
+      @array << meeting
+      if meeting.reconfirmation == true
+      @reconfirmation << meeting
+      end
+    end
+   end
+  @array
+  @reconfirmation
   render 'show'
 end
 
@@ -81,6 +108,18 @@ def destroy
   Appointment.destroy(params[:id])
   @current_user = User.find_by_id(session[:user_id])
   @reuniones = @current_user.appointments
+  @array = []
+  @reconfirmation = []
+    @reuniones.each do |meeting|   
+      if meeting.status == false
+      @array << meeting
+      if meeting.reconfirmation == true
+      @reconfirmation << meeting
+      end
+    end
+   end
+  @array
+  @reconfirmation
   render 'show'
 end
 

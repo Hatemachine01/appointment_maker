@@ -2,9 +2,24 @@
 
 <% if @current_user.status %>
 <h2> Hi Admin! </h2>
-
-
 <div class="container">
+  
+  <% if @array.count >= 1 %>
+  <div class="alert alert-info">
+  </strong> PENDING CONFIRMATIONS <span class="badge"> <%= @array.count%></span>
+</div>
+ <% end %>
+
+
+  <% if @reconfirmation.count >= 1 %>
+<div class="alert alert-danger">
+    <strong>RECONFIRMATIONS </strong> <span class="badge"> <%= @reconfirmation.count%></span>
+  </div>
+  <% end %>
+
+
+
+
   <div class="well">
   </div>
   <div class="new-product"></div>
@@ -73,7 +88,7 @@
           <% else  %> 
         <th>   		YES				</th>	
          <%  end %>	
-        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id), :class => "btn btn-primary" %> </th>
+        <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id),data: {confirm: 'Are you sure? If you Edit this appointment after if has been confirmed the admin will have to confirm it again' },  :class => "btn btn-primary" %> </th>
         <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-danger" %> </th>
 
         </td>

@@ -23,6 +23,7 @@ def create
         session[:user_id] = @user.id
         current_user = User.find_by_id(session[:user_id])
         @reuniones = current_user.appointments
+        
 
         format.html { render 'profile', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -34,7 +35,7 @@ def create
 end
 
 
-def profile
+def profile    
 end
 
 

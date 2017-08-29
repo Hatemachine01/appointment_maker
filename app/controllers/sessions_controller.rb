@@ -14,7 +14,6 @@ user = User.find_by_email(user_params[:email])
    session[:user_id] = user.id
    current_user = User.find_by_id(session[:user_id])
    @reuniones = current_user.appointments
- 
    render 'users/profile' 
     else
     # If user's login doesn't work, send them back to the login form.
