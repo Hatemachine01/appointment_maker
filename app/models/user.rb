@@ -3,6 +3,7 @@ require 'bcrypt'
 class User < ApplicationRecord
 	 include BCrypt
 
+
 has_many :user_appointments		,					  :dependent => :destroy
 has_many :appointments, through: :user_appointments , :dependent => :destroy
 
@@ -11,6 +12,12 @@ has_many :appointments, through: :user_appointments , :dependent => :destroy
 has_secure_password
 
 #validations
+
+validates :name, length: { minimum: 2 } 
+validates :name, length: { maximum: 15 } 
+
+
+
 
 validates :name, :email, presence: true
 validates :email, uniqueness: true

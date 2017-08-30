@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
 
+before_action :logged_in_user
 
 def new
   
@@ -21,7 +22,7 @@ def create
   # start_time =	Time.parse(mixed)
   # original_format =  '%m/%d/%Y  %I:%M %p'
   format = '%m/%d/%Y %I:%M %p'
-  p actual_date =  DateTime.strptime( mixed , format )
+  actual_date =  DateTime.strptime( mixed , format )
   appointment = Appointment.create(start_time: actual_date , duration: duration, description: description )
   current_user = User.find_by_id(session[:user_id])
   users = [current_user, appointment_with]
@@ -51,7 +52,6 @@ def show
  end
 
 
-
 def edit
   @admins = User.where(status: true)
   @duration = 1..5
@@ -63,7 +63,8 @@ def update
   date = params[:date]
   time = params[:time]
   mixed =  [date,time].join(" ")
-  actual_date =  Date.strptime( mixed , '%m/%d/%Y')  #gotta update time format
+  format = '%m/%d/%Y %I:%M %p'
+  actual_date =  DateTime.strptime( mixed , format )  
   duration = params[:duration].to_i
   description = params[:appointment][:description]
   appointment_with = User.find_by_id(params[:with].to_i)
@@ -73,7 +74,6 @@ def update
     if appointment.status == true 
       Appointment.update(appointment.id, :status => false , :reconfirmation => true )
     end
-  current_user = User.find_by_id(session[:user_id])
   @reuniones = current_user.appointments
   redirect_to user_path(current_user)
 end
@@ -81,8 +81,7 @@ end
 
 def confirm
   appointment = Appointment.update(params[:id], :status => true)
-  @current_user = User.find_by_id(session[:user_id])
-  @reuniones = @current_user.appointments
+  @reuniones = current_user.appointments
   @array = []
   @reconfirmation = []
     @reuniones.each do |meeting|   
@@ -106,8 +105,7 @@ end
 
 def destroy
   Appointment.destroy(params[:id])
-  @current_user = User.find_by_id(session[:user_id])
-  @reuniones = @current_user.appointments
+  @reuniones = current_user.appointments
   @array = []
   @reconfirmation = []
     @reuniones.each do |meeting|   
@@ -118,9 +116,20 @@ def destroy
       end
     end
    end
+  
   @array
   @reconfirmation
   render 'show'
 end
+
+
+
+def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
 
 end

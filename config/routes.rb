@@ -20,7 +20,7 @@ root "application#index"
 
 
 resources :appointments
-resources :users
+resources :users 
 
 resources :conversation do
     resources :messages

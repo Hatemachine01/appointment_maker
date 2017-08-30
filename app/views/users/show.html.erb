@@ -1,18 +1,19 @@
+
+<div class="container">
 <% user =  User.find_by_id(session[:user_id]) %>
 <h1> Hi, <%= user.name %>! </h1>
-</div>
+
 
 <div id='schedule_link'> 
-<%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-primary" %>
-<%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-info" %>
+<%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-default" %>
+<%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
 <% if user.status %>
-<%= link_to "View All Users", users_path, :class => "btn btn-info" %>
+<%= link_to "View All Users", users_path, :class => "btn btn-default" %>
 <% end %>
 </div>
 
 
-
-<div id="calender">
+<div class="calendar">
 <h3> Appointments (<%= @reuniones.count %>)</h3>
 <%= month_calendar events: @reuniones do |date, eventos| %>
   <%= date.day %>
@@ -28,8 +29,8 @@
      <% end %>
      <% end %>
 <% end %>
-
-
+</div>
+</div>
 
 
 

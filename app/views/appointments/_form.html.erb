@@ -1,7 +1,11 @@
-<h1> APPOINTMENT </h1>
+<h1> NEW APPOINTMENT </h1>
+    
 
-<%= form_for (@appointment)do |f| %>
      <div class="container">
+
+
+<%= image_tag("LOGO.png", class: "new_appt") %>
+<%= form_for (@appointment)do |f| %>
       <div class="modal-body">
         <ul class="errors"></ul>
    <% p @appointment.errors.any? %> 
@@ -66,7 +70,7 @@
 
       
       <div class="modal-footer">
-        <%= f.submit class: "btn btn-primary" %>
+        <%= f.submit class: "btn btn-success" %>
       </div>
     <% end %>
   </div>

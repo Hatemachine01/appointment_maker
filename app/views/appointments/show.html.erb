@@ -4,6 +4,9 @@
 <h2> Hi Admin! </h2>
 <div class="container">
   
+<%= image_tag("apps.png", class: "apps_img") %>
+
+
   <% if @array.count >= 1 %>
   <div class="alert alert-info">
   </strong> PENDING CONFIRMATIONS <span class="badge"> <%= @array.count%></span>
@@ -68,6 +71,7 @@
 
 
 <div class="container">
+  <%= image_tag("apps.png", class: "apps_img") %>
   <div class="well">
   </div>
   <div class="new-product"></div>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
 
+before_action :logged_in_user, except: [:new, :create]
+
 def index
 
   @all_users = User.all
@@ -16,28 +18,21 @@ def create
 
   @user = User.new(user_params)
   @user.password = user_params[:password]
-    # @user.save!
-    # render 'profile'
-  respond_to do |format|
+  
     if @user.save
-        session[:user_id] = @user.id
-        current_user = User.find_by_id(session[:user_id])
-        @reuniones = current_user.appointments
-        
+        log_in @user
+        @reuniones = @user.appointments
+        redirect_to @user
 
-        format.html { render 'profile', notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
     else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
+ 
 end
 
 
 
 def show
-current_user = User.find_by_id(session[:user_id])
 @reuniones = current_user.appointments
 end
 
@@ -56,18 +51,16 @@ end
 
 
 def personal
-	@current_user = User.find_by_id(params[:user_id])
+	@current_user = current_user
 end
 
 
 def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
 end
 
 
 def update
-
-	current_user = User.find_by_id(session[:user_id])
 	User.update(current_user.id, :address => user_params[:address], :phone_number => user_params[:phone_number])
 	render 'personal'
 end
@@ -92,16 +85,25 @@ end
 
 
 def calendar
- current_user = User.find_by_id(session[:user_id])
  @reuniones = current_user.appointments
 end
+
+
+
+def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
 
 
 private
 
 
 def user_params
-    params.require(:user).permit(:name, :email, :password, :address, :phone_number)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation ,  :address, :phone_number)
 end
 
 end

@@ -20,64 +20,84 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body.welcome {background: #ADD468;}
 
 body { 
     padding-top: 65px; 
 }
 
+.LOGO {
+    
+        float: left;
+    display: block;
+    padding: 0px;
+    margin-top: -355px;
+    height: 145px;
+    width: 165px;
+}
 
 .main_img {
 	position: relative;
-	left : 35%;
+	left : 32%;
 	display: block;
 	height: 200px;
 	width: 400px;
 }
 
+.signup_img {
+  
+    position: relative;
+    left: 45%;
+    display: block;
+    height: 100px;
+    width: 100px;
 
-#calender {
+}
+
+
+.apps_img {
+  
+    margin-bottom: 15px;
+    position: relative;
+    left: 45%;
+    display: block;
+    height: 100px;
+    width: 100px;
+
+
+
+}
+
+.new_appt {
+  
+margin-bottom: 15px;
+    position: relative;
+    left: 45%;
+    display: block;
+    height: 100px;
+    width: 110px;
+
+
+}
+
+
+.personal_info {
+  
+  display : inline-block;
+  margin-left: 295px;
+}
+
+.calendar {
 	
-	float: right;
-    margin-top: 100px;
-    margin-right: 135px;
-    width: 639px;
-    height: 295px;
+   margin-top: 100px;
 }		
 
 #schedule_link {
-	float: left;
-    margin-top: 100px;
-    margin-left: 30px;
+	  float: left;
+    margin-top: -10px;
+    margin-left: 35%;
 }
 
-#popup {
-    height: 50px;
-    width: 200px;
-    text-align: center;
-    vertical-align:middle;
-    background-color: cornflowerblue;
-    color: white;
-    display: none;
-    padding-top: 8px;
-    
-
-    position: absolute;
-}
-
-
-#popup_2 {
-    height: 50px;
-    width: 200px;
-    text-align: center;
-    vertical-align:middle;
-    background-color: red;
-    color: white;
-    display: none;
-    padding-top: 8px;
-    
-
-    position: absolute;
-}
 
 /* typography */
 
