@@ -45,6 +45,8 @@ gem 'validates_email_format_of'
 gem "simple_calendar", "~> 2.0"
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails-addon', '~> 0.5.1'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri

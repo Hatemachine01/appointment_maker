@@ -1,16 +1,47 @@
+
+<div class="container">
 <h1> MESSAGES </h1>
-
-
-<% @conversations.each do |conversation| %>
-
-	<div> 
-
-<%= link_to conversation.subject, conversation_path(conversation) %>
-
-<% end %>
+<div id="messages_link"> 
+<%= link_to "New Message " , new_conversation_path , class: "btn btn-success" %>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading"> </div>
 
+  <div class="panel-body">
+    <div class="messages">
+	<table style="width:100%">
+  <tr>
+    <th> Sender </th>
+    <th>Subject</th> 
+    <th>Time</th>
+  </tr>
+	<% @conversations.each do |conversation| %>   
+  <tr>
+    <td> <%= conversation.originator.name %></td>
+    <td> <%= conversation.subject %></td>
+    <td><%= conversation.created_at %></td> 
+    <td> <%= link_to "REPLY", conversation_path(conversation) %></td>
+  </tr>
+<% end %>
+</table>
 
+   
+	<div> 
+        <div class="media">
+ 	
+          <div class="media-left">
+  
+     
+          </div>
 
-<%= link_to "New Message " , new_conversation_path %>
+          <div class="media-body">
+           
+          </div>
+        
+        </div>
+  
+    </div>
+  </div>
+   </div>
+

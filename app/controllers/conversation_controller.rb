@@ -2,6 +2,7 @@ class ConversationController < ApplicationController
 
 	def index
 	@conversations = current_user.mailbox.conversations
+
 	end
 
 	def show 
@@ -9,7 +10,11 @@ class ConversationController < ApplicationController
 	end
 
 	def new
-	@recipients = User.where(status: true)
+		if current_user.status? 
+		@recipients = User.all
+		else
+	    @recipients = User.where(status: true)
+		end
 	end
 
 
