@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 
 before_action :logged_in_user, except: [:new, :create]
+before_action :logged_in_user_admin , only: [:index, :searcher, :search]
 
 def index
 
@@ -26,7 +27,7 @@ def create
 
     else
         render 'new'
-      end
+    end
  
 end
 
@@ -79,6 +80,7 @@ def search
  @results
 end
 
+
 def test
 end
 
@@ -94,6 +96,15 @@ def logged_in_user
       unless logged_in?
         flash[:danger] = "Please log in."
         redirect_to login_url
+      end
+    end
+
+
+
+def logged_in_user_admin
+      unless current_user.status?
+        flash[:danger] = "ACCESS RESTRICTED"
+        redirect_to restricted_path
       end
     end
 

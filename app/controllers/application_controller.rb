@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
 
-
+def restricted
+end
 
 end
 

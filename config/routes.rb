@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-
+get    '/application/restricted' => 'application#restricted', as: 'restricted'
 get    '/users/test' => 'users#test', as: 'test'
 get    '/users/search' => 'users#search', as: 'search'
 get    '/users/calendar' => 'users#calendar', as: 'calendar'
