@@ -37,8 +37,8 @@ Trash (<%= current_user.mailbox.trash.count %>)
   <tr>
     <td> <%= conversation.originator.name %></td>
     <td> <%= conversation.subject %></td>
+    <td><%= conversation.created_at %></td>
     <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) %></td>
-    <td><%= conversation.created_at %></td> 
     <td> <%= link_to "REPLY", conversation_path(conversation) %></td>
     <% if conversation.is_unread?(current_user) %>
     <td><strong><p> NEW MESSAGE </p></strong></td>
