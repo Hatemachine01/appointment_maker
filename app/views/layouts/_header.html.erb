@@ -13,8 +13,9 @@
 
             <ul class="dropdown-menu">
               <li class="divider"></li>
+              
               <li><%= link_to "Personal Info", personal_path(:user_id => session[:user_id]) %></li>
-
+         
               <li>
                 <%= link_to "Log out", logout_path, method: :delete %>
               </li>
