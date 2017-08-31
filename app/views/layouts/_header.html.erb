@@ -1,6 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+    <% if session[:user_id] == nil %>
     <%= link_to "ScheduleIT", root_path, id: "logo" %>
+    <% else %>
+    <%= link_to "ScheduleIT", user_path(current_user), id: "logo" %>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if session[:user_id] != nil %>

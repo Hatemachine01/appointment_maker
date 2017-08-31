@@ -16,6 +16,7 @@ Trash (<%= current_user.mailbox.trash.count %>)
 
 <div id="messages_link"> 
 <%= link_to "New Message " , new_conversation_path , class: "btn btn-success" %>
+<%= link_to "Trash " , show_trash_path , class: "btn btn-warning" %>
 <div class="notification-icon">
     <span class="glyphicon glyphicon-envelope"></span>
     <span class="badge">Unread (<%= current_user.mailbox.inbox(:unread => true).count %>) </span>
@@ -38,14 +39,12 @@ Trash (<%= current_user.mailbox.trash.count %>)
     <td> <%= conversation.originator.name %></td>
     <td> <%= conversation.subject %></td>
     <td><%= conversation.created_at %></td>
-    <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) %></td>
-    <td> <%= link_to "REPLY", conversation_path(conversation) %></td>
+    <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) , class: "btn-danger btn-sm" %> </td>
+    <td> <%= link_to "View/Reply", conversation_path(conversation), class: "btn btn-primary btn-sm" %></td>
     <% if conversation.is_unread?(current_user) %>
     <td><strong><p> NEW MESSAGE </p></strong></td>
     <% end %>
-
-
-  </tr>
+</tr>
 <% end %>
 </table>
 

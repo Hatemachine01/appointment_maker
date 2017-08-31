@@ -33,7 +33,7 @@
       <% @reuniones.each do |meeting| %>
 
       <% meeting.users.ids.each do |id| %>
-      <% p user = User.find_by_id(id) %>
+      <%  user = User.find_by_id(id) %>
       <% if user.status == false %>
         <td>  User :    </td>
         <th>  <%= user.name %> </th>

@@ -1,0 +1,21 @@
+<h1> TRASH CAN </h1>
+
+<table style="width:100%">
+  <tr>
+    <th> Sender </th>
+    <th>Subject</th> 
+    <th>Time</th>
+  </tr>
+	<% @trash.each do |conversation| %>   
+  	<% p conversation %>
+  <tr>
+    <td> <%= conversation.originator.name %></td>
+    <td> <%= conversation.subject %></td>
+    <td><%= conversation.created_at %></td>
+    <td><%= link_to 'Move to Inbox ', trash_conversation_index_path(conversation.id) , class: "btn-danger btn-sm" %> </td>
+    <% if conversation.is_unread?(current_user) %>
+    <td><strong><p> NEW MESSAGE </p></strong></td>
+    <% end %>
+</tr>
+<% end %>
+</table>

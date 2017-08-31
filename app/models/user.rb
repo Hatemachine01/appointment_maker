@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	 include BCrypt
 
 
-has_many :user_appointments		,					  :dependent => :destroy
+has_many :user_appointments 	  
 has_many :appointments, through: :user_appointments , :dependent => :destroy
 
 

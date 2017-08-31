@@ -26,7 +26,17 @@ class ConversationController < ApplicationController
     @conversation = current_user.mailbox.conversations.find(params[:format])
     @conversation.move_to_trash(current_user)
 
+    redirect_to conversation_index_path
+
   	end
+
+	
+  	def show_trash
+
+  	@trash = current_user.mailbox.trash
+
+  	end
+
 
 	def create
 
