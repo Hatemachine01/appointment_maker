@@ -26,6 +26,7 @@ validates_email_format_of :email, :message => 'is not looking good'
 
 
 acts_as_messageable
+before_destroy { messages.destroy_all }
 
 attr :password
 

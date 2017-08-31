@@ -24,7 +24,17 @@ resources :users
 
 resources :conversation do
     resources :messages
-  end
+  
+
+
+collection do
+      get :inbox
+      get :all, action: :index
+      get :sent
+      get :trash
+    end
+end
+
 
 end
 

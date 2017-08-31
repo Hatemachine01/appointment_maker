@@ -1,8 +1,25 @@
 
 <div class="container">
 <h1> MESSAGES </h1>
+
+
+<hr />
+
+Inbox (<%= current_user.mailbox.inbox.unread(current_user).count %>) |
+All Conversations (<%= current_user.mailbox.conversations.count %>) |
+Sent (<%= current_user.mailbox.sentbox.count %>) |
+Trash (<%= current_user.mailbox.trash.count %>)
+
+
+<hr />
+
+
 <div id="messages_link"> 
 <%= link_to "New Message " , new_conversation_path , class: "btn btn-success" %>
+<div class="notification-icon">
+    <span class="glyphicon glyphicon-envelope"></span>
+    <span class="badge">Unread (<%= current_user.mailbox.inbox(:unread => true).count %>) </span>
+</div>
 </div>
 
 <div class="panel panel-default">
@@ -20,14 +37,19 @@
   <tr>
     <td> <%= conversation.originator.name %></td>
     <td> <%= conversation.subject %></td>
+    <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) %></td>
     <td><%= conversation.created_at %></td> 
     <td> <%= link_to "REPLY", conversation_path(conversation) %></td>
+    <% if conversation.is_unread?(current_user) %>
+    <td><strong><p> NEW MESSAGE </p></strong></td>
+    <% end %>
+
+
   </tr>
 <% end %>
 </table>
 
-   
-	<div> 
+   <div> 
         <div class="media">
  	
           <div class="media-left">
@@ -44,4 +66,9 @@
     </div>
   </div>
    </div>
+</div>
+
+
+
+
 

@@ -7,6 +7,7 @@ class ConversationController < ApplicationController
 
 	def show 
 	@conversation = current_user.mailbox.conversations.find(params[:id])
+	@conversation.mark_as_read(current_user)
 	end
 
 	def new
@@ -17,6 +18,12 @@ class ConversationController < ApplicationController
 		end
 	end
 
+
+	def trash
+    @conversation = current_user.mailbox.conversations.find(params[:format])
+    @conversation.move_to_trash(current_user)
+
+  	end
 
 	def create
 
