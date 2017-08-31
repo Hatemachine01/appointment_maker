@@ -6,5 +6,9 @@ class ApplicationController < ActionController::Base
 def restricted
 end
 
+def about
+end
+
+
 end
 
