@@ -104,7 +104,7 @@ end
 
 
 def destroy
-  Appointment.destroy_all(params[:id])
+  Appointment.destroy(params[:id])
   @reuniones = current_user.appointments
   @array = []
   @reconfirmation = []
