@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 
 
-get    '/conversation/show_trash' => 'conversation#show_sent', as: 'show_sent'
+get    '/conversation/show_sent' => 'conversation#show_sent', as: 'show_sent'
 get    '/conversation/untrash' => 'conversation#untrash', as: 'untrash'
 get    '/conversation/show_trash' => 'conversation#show_trash', as: 'show_trash'
 get    '/application/about' => 'application#about', as: 'about'

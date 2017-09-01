@@ -17,7 +17,7 @@ Trash (<%= current_user.mailbox.trash.count %>)
 <div id="messages_link"> 
 <%= link_to "New Message " , new_conversation_path , class: "btn btn-success" %>
 <%= link_to "Sent Messages " , show_sent_path , class: "btn btn-info" %>
-<%= link_to "Trash " , show_trash_path , class: "btn btn-warning" %>
+<%= link_to "Trash " , show_trash_url , class: "btn btn-warning" %>
 
 <div class="notification-icon">
     <span class="glyphicon glyphicon-envelope"></span>
@@ -99,16 +99,7 @@ Trash (<%= current_user.mailbox.trash.count %>)
 </table>
 
    <div> 
-        <div class="media">
-  
-          <div class="media-left">
-  
-     
-          </div>
-
-          <div class="media-body">
-           
-          </div>
+        
         
         </div>
   
