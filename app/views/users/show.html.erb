@@ -4,14 +4,20 @@
 <h1> Hi, <%= user.name %>! </h1>
 
 
+
+<% if user.status %>
+<div id='schedule_link'> 
+<%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
+<%= link_to "Mailbox" , conversation_index_path, :class => "btn btn-default" %>
+<%= link_to "View All Users", users_path, :class => "btn btn-default" %>
+</div>
+<% else %>
 <div id='schedule_link'> 
 <%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-default" %>
 <%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
 <%= link_to "Mailbox" , conversation_index_path, :class => "btn btn-default" %>
-<% if user.status %>
-<%= link_to "View All Users", users_path, :class => "btn btn-default" %>
-<% end %>
 </div>
+<% end %>
 
 
 <div class="calendar">
