@@ -57,13 +57,18 @@ end
 
 
 def edit
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
 end
 
 
 def update
-	User.update(current_user.id, :address => user_params[:address], :phone_number => user_params[:phone_number])
-	render 'personal'
+	User.update(params[:id], :address => user_params[:address], :phone_number => user_params[:phone_number])
+	
+  if current_user.status?
+  redirect_to users_path
+  else
+    render "personal"
+  end
 end
 
 

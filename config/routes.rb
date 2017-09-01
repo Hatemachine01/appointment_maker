@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
+
+get    '/conversation/show_trash' => 'conversation#show_sent', as: 'show_sent'
+get    '/conversation/untrash' => 'conversation#untrash', as: 'untrash'
 get    '/conversation/show_trash' => 'conversation#show_trash', as: 'show_trash'
 get    '/application/about' => 'application#about', as: 'about'
 get    '/application/restricted' => 'application#restricted', as: 'restricted'

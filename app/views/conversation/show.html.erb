@@ -10,15 +10,8 @@
 <% end %>
 
 <%= link_to 'Back to Mailbox', conversation_index_path , class: "btn btn-success"  %>
-
-
 <%= form_tag conversation_messages_path(@conversation) , method: :post do %>
-	<div>
-		
-	<%= text_area_tag :body %>
-
-	</div>
-
-	<%= submit_tag "Send" , class: "btn-success" %>
-
-	<% end %>
+	<div>	<%= text_area_tag :body %>
+</div>
+<%= submit_tag "Send" , class: "btn-success" %>
+<% end %>

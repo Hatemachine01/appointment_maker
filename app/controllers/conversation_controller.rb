@@ -1,7 +1,7 @@
 class ConversationController < ApplicationController
 
 	def index
-	@conversations = current_user.mailbox.inbox
+	@conversations = current_user.mailbox.conversations
 
 	end
 
@@ -31,9 +31,25 @@ class ConversationController < ApplicationController
   	end
 
 	
+  	def untrash
+  	
+  	@conversation = current_user.mailbox.conversations.find(params[:format])
+    @conversation.untrash(current_user)
+    redirect_to conversation_index_path
+  	end
+
+
+
   	def show_trash
 
   	@trash = current_user.mailbox.trash
+
+  	end
+
+
+  	def show_sent
+
+  	@sent =	current_user.mailbox.sentbox
 
   	end
 
