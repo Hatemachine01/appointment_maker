@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-
-
 def new
 end
 
@@ -14,11 +12,11 @@ def create
    log_in @user
    @reuniones = current_user.appointments
    redirect_to user_path(current_user)
-    else
+  else
     # If user's login doesn't work, send them back to the login form.
       redirect_to '/login'
-    end
   end
+end
 
 
 def destroy

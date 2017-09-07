@@ -3,7 +3,6 @@ class AppointmentsController < ApplicationController
 before_action :logged_in_user
 
 def new
-  
   @appointment = Appointment.new
   @admins = User.where(status: true)
   @duration = 1..5
@@ -11,7 +10,8 @@ end
 
 
 def create
-
+  #here we create appointments and the appointment data format is converted
+  # from String to DateTime
   date = params[:date]
   time = params[:time]
   duration = params[:duration].to_i
@@ -39,7 +39,7 @@ def show
  @reuniones = @current_user.appointments
  @array = []
  @reconfirmation = []
-    @reuniones.each do |meeting|   
+    @reuniones.each do |meeting|
       if meeting.status == false
       @array << meeting
       if meeting.reconfirmation == true
@@ -64,14 +64,14 @@ def update
   time = params[:time]
   mixed =  [date,time].join(" ")
   format = '%m/%d/%Y %I:%M %p'
-  actual_date =  DateTime.strptime( mixed , format )  
+  actual_date =  DateTime.strptime( mixed , format )
   duration = params[:duration].to_i
   description = params[:appointment][:description]
   appointment_with = User.find_by_id(params[:with].to_i)
-  appointment = Appointment.update(params[:id], :start_time => actual_date , 
+  appointment = Appointment.update(params[:id], :start_time => actual_date ,
   :duration => duration, :description => description )
     #change appointment status if already confirmed
-    if appointment.status == true 
+    if appointment.status == true
       Appointment.update(appointment.id, :status => false , :reconfirmation => true )
     end
   @reuniones = current_user.appointments
@@ -84,7 +84,7 @@ def confirm
   @reuniones = current_user.appointments
   @array = []
   @reconfirmation = []
-    @reuniones.each do |meeting|   
+    @reuniones.each do |meeting|
       if meeting.status == false
       @array << meeting
       if meeting.reconfirmation == true
@@ -108,15 +108,14 @@ def destroy
   @reuniones = current_user.appointments
   @array = []
   @reconfirmation = []
-    @reuniones.each do |meeting|   
-      if meeting.status == false
-      @array << meeting
-      if meeting.reconfirmation == true
-      @reconfirmation << meeting
+    @reuniones.each do |meeting|
+        if meeting.status == false
+          @array << meeting
+          if meeting.reconfirmation == true
+            @reconfirmation << meeting
+          end
+        end
       end
-    end
-   end
-  
   @array
   @reconfirmation
   render 'show'
@@ -129,7 +128,7 @@ def logged_in_user
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
-    end
+end
 
 
 end
