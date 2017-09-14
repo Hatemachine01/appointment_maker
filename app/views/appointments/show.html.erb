@@ -2,7 +2,7 @@
 
 <% if @current_user.status %>
 <h2> Hi Admin! </h2>
-<div class="container">
+
   
 <%= image_tag("apps.png", class: "apps_img") %>
 
@@ -22,16 +22,12 @@
 
 
 
+  <div class="container">
 
-  <div class="well">
-  </div>
-  <div class="new-product"></div>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-       
       <% @reuniones.each do |meeting| %>
-
       <% meeting.users.ids.each do |id| %>
       <%  user = User.find_by_id(id) %>
       <% if user.status == false %>
@@ -64,6 +60,8 @@
     </thead>
     <%  end %>
   </table>
+</div>
+
 
 
 <% else %>
@@ -72,13 +70,9 @@
 
 <div class="container">
   <%= image_tag("apps.png", class: "apps_img") %>
-  <div class="well">
-  </div>
-  <div class="new-product"></div>
 	<table class="table table-bordered table-striped">
     <thead>
       <tr>
-       
       <% @reuniones.each do |meeting| %>
         <td>	Date :		</td>
         <th>  <%= meeting.start_time %> </th>
@@ -101,6 +95,8 @@
     <%  end %>
   </table>
 <%  end %>
-
+ </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+  
+
 

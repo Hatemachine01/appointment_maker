@@ -1,24 +1,18 @@
 <h1> Personal Info  </h1>
 
 <div class="container">
-<%= image_tag("user.png", class: "new_appt") %>
-<% user =  User.find_by_id(session[:user_id]) %>
-<%= user.name %> <%= user.email %> 
-
-<div class="personal_info">  
-<%= link_to "UPDATE PERSONAL INFO", edit_user_path(session[:user_id]) , :class => "btn btn-default" %>
+	<%= image_tag("user.png", class: "new_appt") %>
+	<% user =  User.find_by_id(session[:user_id]) %>
+	<%= user.name %> <%= user.email %> 
+		<div class="personal_info">  
+			<%= link_to "UPDATE PERSONAL INFO", edit_user_path(session[:user_id]) , :class => "btn btn-default" %>
 </div>
-
-
-
-
-<% if user.address == nil  %>
-<p> Looks like you haven't updated your personal info. <br>
-<%= link_to "UPDATE PERSONAL INFO", edit_user_path(session[:user_id]) %></li>
-<% else   %>
-<p> <%= user.address %><br>
-<p> <%= user.phone_number %><br>
-</p>
-<% end %>
-</div>
+	<% if user.address == nil  %>
+		<p> Looks like you haven't updated your personal info. <br>
+		<%= link_to "UPDATE PERSONAL INFO", edit_user_path(session[:user_id]) %></li>
+	<% else   %>
+		<p> <%= user.address %><br>
+		<p> <%= user.phone_number %><br></p>
+	<% end %>
+		</div>
 </div>

@@ -3,75 +3,67 @@
 <h1> MESSAGES </h1>
 
 
-<hr />
-
-Inbox (<%= current_user.mailbox.inbox.unread(current_user).count %>) |
-All Conversations (<%= current_user.mailbox.conversations.count %>) |
-Sent (<%= current_user.mailbox.sentbox.count %>) |
-Trash (<%= current_user.mailbox.trash.count %>)
-
-
-<hr />
+<hr/>
+  Inbox (<%= current_user.mailbox.inbox.unread(current_user).count %>) |
+  All Conversations (<%= current_user.mailbox.conversations.count %>) |
+  Sent (<%= current_user.mailbox.sentbox.count %>) |
+  Trash (<%= current_user.mailbox.trash.count %>)
+<hr/>
 
 
 <div id="messages_link"> 
-<%= link_to "New Message " , new_conversation_path , class: "btn btn-success" %>
-<%= link_to "Sent Messages " , show_sent_path , class: "btn btn-info" %>
-<%= link_to "Trash " , show_trash_url , class: "btn btn-warning" %>
+  <%= link_to "New Message " , new_conversation_path , class: "btn btn-success" %>
+  <%= link_to "Sent Messages " , show_sent_path , class: "btn btn-info" %>
+  <%= link_to "Trash " , show_trash_url , class: "btn btn-warning" %>
 
-<div class="notification-icon">
-    <span class="glyphicon glyphicon-envelope"></span>
-    <span class="badge">Unread (<%= current_user.mailbox.inbox(:unread => true).count %>) </span>
-</div>
+    <div class="notification-icon">
+      <span class="glyphicon glyphicon-envelope"></span>
+      <span class="badge">Unread (<%= current_user.mailbox.inbox(:unread => true).count %>) </span>
+    </div>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading"> </div>
-
-  
-<% if current_user.mailbox.inbox(:unread => true).count >= 1 %>
-
-
-
+    <% if current_user.mailbox.inbox(:unread => true).count >= 1 %>
   <div class="panel-body">
     <div class="messages">
-	<table style="width:100%">
-  <tr>
-    <th> Sender </th>
-    <th>Subject</th> 
-    <th>Time</th>
-  </tr>
-	<%  current_user.mailbox.inbox(:unread => true).each do |conversation| %>   
-  <tr>
-    <td> <%= conversation.originator.name %></td>
-    <td> <%= conversation.subject %></td>
-    <td><%= conversation.created_at %></td>
-    <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) , class: "btn-danger btn-sm" %> </td>
-    <td> <%= link_to "View/Reply", conversation_path(conversation), class: "btn btn-primary btn-sm" %></td>
-    <% if conversation.is_unread?(current_user) %>
-    <td><strong><p> NEW MESSAGE </p></strong></td>
-    <% end %>
-</tr>
-<% end %>
-</table>
+	   <table style="width:100%">
+      <tr>
+        <th> Sender </th>
+        <th>Subject</th> 
+        <th>Time</th>
+      </tr>
+      <%  current_user.mailbox.inbox(:unread => true).each do |conversation| %>   
+      <tr>
+        <td> <%= conversation.originator.name %></td>
+        <td> <%= conversation.subject %></td>
+        <td><%= conversation.created_at %></td>
+        <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) , class: "btn-danger btn-sm" %> </td>
+        <td> <%= link_to "View/Reply", conversation_path(conversation), class: "btn btn-primary btn-sm" %></td>
+        <% if conversation.is_unread?(current_user) %>
+        <td><strong><p> NEW MESSAGE </p></strong></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
 
-   <div> 
-        <div class="media">
- 	
-          <div class="media-left">
-  
-     
-          </div>
+    <div> 
+      <div class="media">
 
-          <div class="media-body">
-           
-          </div>
-        
+        <div class="media-left">
+
+
         </div>
-  
+
+        <div class="media-body">
+
+        </div>
+        
+      </div>
+
     </div>
   </div>
-   </div>
+</div>
 </div>
 <% end %>
 
@@ -80,32 +72,28 @@ Trash (<%= current_user.mailbox.trash.count %>)
 
   <div class="panel-body">
     <div class="messages">
-  <table style="width:100%">
-  <tr>
-    <th> Sender </th>
-    <th>Subject</th> 
-    <th>Time</th>
-  </tr>
-  <%  @conversations.each do |conversation| %>   
-  <tr>
-    <td> <%= conversation.originator.name %></td>
-    <td> <%= conversation.subject %></td>
-    <td><%= conversation.created_at %></td>
-    <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) , class: "btn-danger btn-sm" %> </td>
-    <td> <%= link_to "View/Reply", conversation_path(conversation), class: "btn btn-primary btn-sm" %></td>
-    
-</tr>
-<% end %>
-</table>
+      <table style="width:100%">
+        <tr>
+          <th> Sender </th>
+          <th>Subject</th> 
+          <th>Time</th>
+        </tr>
+        <%  @conversations.each do |conversation| %>   
+        <tr>
+          <td> <%= conversation.originator.name %></td>
+          <td> <%= conversation.subject %></td>
+          <td><%= conversation.created_at %></td>
+          <td><%= link_to 'Move to trash', trash_conversation_index_path(conversation.id) , class: "btn-danger btn-sm" %> </td>
+          <td> <%= link_to "View/Reply", conversation_path(conversation), class: "btn btn-primary btn-sm" %></td>
 
-   <div> 
-        
-        
-        </div>
-  
+        </tr>
+        <% end %>
+      </table>
+        <div> 
+      </div>
     </div>
   </div>
-   </div>
+</div>
 </div>
 
 

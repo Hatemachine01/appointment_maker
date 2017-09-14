@@ -1,41 +1,35 @@
-
 <div class="container">
-<% user =  User.find_by_id(session[:user_id]) %>
+  <% user =  User.find_by_id(session[:user_id]) %>
 <h1> Hi, <%= user.name %>! </h1>
-
-
-
-<% if user.status %>
+  <% if user.status %>
 <div id='schedule_link'> 
-<%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
-<%= link_to "Mailbox" , conversation_index_path, :class => "btn btn-default" %>
-<%= link_to "View All Users", users_path, :class => "btn btn-default" %>
+  <%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
+  <%= link_to "Mailbox" , conversation_index_path, :class => "btn btn-default" %>
+  <%= link_to "View All Users", users_path, :class => "btn btn-default" %>
 </div>
-<% else %>
+  <% else %>
 <div id='schedule_link'> 
-<%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-default" %>
-<%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
-<%= link_to "Mailbox" , conversation_index_path, :class => "btn btn-default" %>
+  <%= link_to "Schedule Appointment", new_appointment_path , :class => "btn btn-default" %>
+  <%= link_to "Manage Appointments", appointment_path(:id => session[:user_id]) , :class => "btn btn-default" %>
+  <%= link_to "Mailbox" , conversation_index_path, :class => "btn btn-default" %>
+  <% end %>
 </div>
-<% end %>
-
-
 <div class="calendar">
-<h3> Appointments (<%= @reuniones.count %>)</h3>
-<%= month_calendar events: @reuniones do |date, eventos| %>
-  <%= date.day %>
-  <% eventos.each do |evento| %>
-    <div>
-      <% if evento.status == false %>
-      <% x = " *unconfirmed*" %>
-      <%= link_to evento.description + x , evento %>
+  <h3> Appointments (<%= @reuniones.count %>)</h3>
+  <%= month_calendar events: @reuniones do |date, eventos| %>
+    <%= date.day %>
+      <% eventos.each do |evento| %>
+<div>
+        <% if evento.status == false %>
+          <% x = " *unconfirmed*" %>
+          <%= link_to evento.description + x , evento %>
       <% else %>
-     <% x = " *confirmed*" %>
-     <%= link_to evento.description + x , evento %> 
-    </div>
-     <% end %>
-     <% end %>
-<% end %>
+        <% x = " *confirmed*" %>
+        <%= link_to evento.description + x , evento %> 
+</div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
 </div>
 

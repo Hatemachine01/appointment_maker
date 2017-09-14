@@ -3,20 +3,16 @@
 <%= month_calendar events: @reuniones do |date, eventos| %>
   <%= date.day %>
   <% eventos.each do |evento| %>
-    <div>
+  <div>
       <% if evento.status == false %>
-      <% x = " *unconfirmed*" %>
-      <%= link_to evento.description + x , evento %>
-     
-
+        <% x = " *unconfirmed*" %>
+        <%= link_to evento.description + x , evento %>
       <% else %>
-    
-      <% x = " *confirmed*" %>
-     <%= link_to evento.description + x , evento %> 
-    </div>
-     <% end %>
-     <% end %>
+        <% x = " *confirmed*" %>
+        <%= link_to evento.description + x , evento %> 
+      <% end %>
+  <% end %>
 <% end %>
-
+  </div>
 
 
