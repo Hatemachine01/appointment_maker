@@ -5,6 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
+* Rails 5.0.4
 * Ruby version
 
 * System dependencies
@@ -12,6 +13,7 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+  
 
 * Database initialization
 
