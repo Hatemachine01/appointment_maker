@@ -1,24 +1,7 @@
-# README
+ScheduleIT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A schedule management plataform built on Rails.
 
-Things you may want to cover:
+Built on Ruby 2.3.4 and Rails 5.0.1.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run rake db:seed along with the migration.
