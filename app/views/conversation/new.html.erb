@@ -15,5 +15,11 @@
 
  <%= submit_tag "Send" , class: "btn-success" %>
 
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+
 <% end %>
 

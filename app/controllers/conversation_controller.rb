@@ -49,8 +49,14 @@ class ConversationController < ApplicationController
 
 
 	def create
-		recipient = User.find(params[:user_id])
-		receipt = current_user.send_message(recipient, params[:body], params[:subject])
-		redirect_to conversation_path(receipt.conversation)
+		
+			if params[:body] == "" || params[:subject] == ""
+			flash[:notice] = 'message or subject cannot be blank, please try again'
+			redirect_to new_conversation_path
+			else
+			recipient = User.find(params[:user_id])
+			receipt = current_user.send_message(recipient, params[:body], params[:subject])
+			redirect_to conversation_path(receipt.conversation)
+		end
 	end
 end
