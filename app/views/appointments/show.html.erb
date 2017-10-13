@@ -2,7 +2,7 @@
 
 <% if @current_user.status %>
 <h2> Hi Admin! </h2>
-
+<div class="container">
   
 <%= image_tag("apps.png", class: "apps_img") %>
 
@@ -22,12 +22,16 @@
 
 
 
-  <div class="container">
 
+  <div class="well">
+  </div>
+  <div class="new-product"></div>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
+       
       <% @reuniones.each do |meeting| %>
+
       <% meeting.users.ids.each do |id| %>
       <%  user = User.find_by_id(id) %>
       <% if user.status == false %>
@@ -60,8 +64,6 @@
     </thead>
     <%  end %>
   </table>
-</div>
-
 
 
 <% else %>
@@ -70,22 +72,26 @@
 
 <div class="container">
   <%= image_tag("apps.png", class: "apps_img") %>
-	<table class="table table-bordered table-striped">
+  <div class="well">
+  </div>
+  <div class="new-product"></div>
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
+       
       <% @reuniones.each do |meeting| %>
-        <td>	Date :		</td>
+        <td>  Date :    </td>
         <th>  <%= meeting.start_time %> </th>
-      	<td>	Description	:	</td>
-      	<th>  <%= meeting.description %> </th>
-      	<td>	Duration	:	</td>
-      	<th>  <%= meeting.duration %> </th>
-      	<td>	Confirmed ?		</td>
-      	  <% if  meeting.status == false %> 
-        <th>   		NO				</th>
+        <td>  Description : </td>
+        <th>  <%= meeting.description %> </th>
+        <td>  Duration  : </td>
+        <th>  <%= meeting.duration %> </th>
+        <td>  Confirmed ?   </td>
+          <% if  meeting.status == false %> 
+        <th>      NO        </th>
           <% else  %> 
-        <th>   		YES				</th>	
-         <%  end %>	
+        <th>      YES       </th> 
+         <%  end %> 
         <th> <%= link_to "UPDATE", edit_appointment_path(meeting.id),data: {confirm: 'Are you sure? If you Edit this appointment after if has been confirmed the admin will have to confirm it again' },  :class => "btn btn-primary" %> </th>
         <th> <%= link_to "DELETE", appointment_path(meeting.id), method: :delete, data: {confirm: 'Are you sure?' } , :class => "btn btn-danger" %> </th>
 
@@ -95,8 +101,9 @@
     <%  end %>
   </table>
 <%  end %>
- </div>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-  
+
+
 
 
